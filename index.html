@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja-JP" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/index.css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.6/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>TakeOutOurMusic</title>
+    <meta name="description" content="RAISON DȆTREブースで展示されていた曲をお持ち帰りいただけます！" />
+
+</head>
+<body>
+    <div class="w-full p-4 bg-base-300">
+        <p>※当サイトの楽曲データの無断転載、二次配布はおやめください。そのほかの利用については作曲者本人にご連絡ください。</p>
+    </div>
+    <div class="mx-8">
+        <div class="container grid gap-4 mx-auto">
+            
+            <div class="card bg-base-100 shadow-xl">
+
+                <figure><img src="src/images/" alt="icon" class="w-64 p-4 rounded-full" /></figure>
+
+                <h2 class="card-title text-3xl flex justify-center py-4">ARTIST_NAME</h2>
+                <div class="card-body items-center text-center">
+                    <div class="">
+                        <h3 class="text-xl text-left m-4">SONG_TITLE</h3>
+                        <audio controls style="max-width: 100%;" src="src/audio/"
+                            type="audio/mp3">SONG_TITLE</audio>
+                    </div>
+                    
+                    <div class="pt-10 flex gap-4 justify-end">
+                        <a href="https://x.com" target="_new" rel="noopener noreferrer"><img src="src/logo/logo-black.png" alt="" width="35"></a>
+                        <a href="https://soundcloud.com" target="_new" rel="noopener noreferrer"><img src="src/logo/soundcloud-1.svg" alt="" width="60"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+</body>
+<script src="src/tailwind.config.js"></script>
+</html>
