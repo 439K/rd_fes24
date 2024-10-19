@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Music</title>
+    <link rel="stylesheet" href="src/style.css"> <!-- 同じCSSを使用 -->
+</head>
+<body>
+
+    <h1>楽曲を投稿する</h1>
+
+    <form action="submit_music.php" method="post" enctype="multipart/form-data">
+        <label for="songTitle">曲名:</label><br>
+        <input type="text" id="songTitle" name="songTitle" required><br><br>
+
+        <label for="artistName">作曲者名:</label><br>
+        <input type="text" id="artistName" name="artistName" required><br><br>
+
+        <label for="songFile">楽曲ファイルを選択:</label><br>
+        <input type="file" id="songFile" name="songFile" accept="audio/*" required><br><br>
+
+        <input type="submit" value="投稿">
+    </form>
+
+    <div class="back-link">
+        <a href="index.html">戻る</a>
+    </div>
+
+</body>
+</html>
