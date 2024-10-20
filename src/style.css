@@ -3,37 +3,57 @@ body {
     font-family: "Noto Sans JP", sans-serif;
     margin: 0;
     padding: 0;
-    justify-content: center; /* 水平方向中央寄せ */
-    align-items: center; /* 垂直方向中央寄せ */
-    height: 100vh; /* 画面の高さを100%に */
-    background-color: #f7fae6; /* 背景色 */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7fae6;
 }
 
 /* コンテンツ全体のレイアウトを中央に */
 .container {
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px; /* 拡大 */
     background-color: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 軽い影をつけてスタイリッシュに */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border-radius: 10px; /* 角を少し丸める */
-    text-align: center; /* テキスト中央寄せ */
+    border-radius: 10px;
+    text-align: center;
 }
+
+/* プロフィール部分と楽曲一覧をまとめて表示するためのレイアウト */
+.profile-list {
+    display: grid;
+    grid-template-columns: 1fr; /* デフォルトで1列 */
+    grid-gap: 50px;
+    margin: 50px;
+}
+
+.profile-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 縦方向の中央揃え */
+    justify-content: center; /* 横方向の中央揃え */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 
 /* プロフィール部分のレイアウト */
 .profile {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .profile img {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 50%; /* 丸い画像 */
-    margin-bottom: 20px;
+    border-radius: 50%;
     margin-right: 30px;
+    filter: drop-shadow(3px 3px 3px #777777);
 }
 
 .profile-details h1 {
@@ -50,19 +70,7 @@ body {
 
 /* 楽曲一覧部分 */
 .music-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; /* アイコンとテキストを縦並びに */
-}
-
-.music-list h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #333;
-    border-bottom: 2px solid #e0e0e0;
-    display: inline-block;
-    padding-bottom: 5px;
+    margin-top: 20px;
 }
 
 .music-item {
@@ -72,51 +80,17 @@ body {
 .music-item p {
     font-size: 18px;
     color: #555;
-    margin-bottom: 15px;
 }
 
 audio {
-    max-width: 600px;
+    max-width: 100%;
     border-radius: 5px;
-}
-
-/* 投稿リンクのスタイル */
-.submit-link {
-    margin-top: 30px;
-}
-
-.submit-link a {
-    font-size: 18px;
-    color: #007BFF;
-    text-decoration: none;
-    border: 2px solid #007BFF;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s; /* ホバー時のエフェクト */
-}
-
-.submit-link a:hover {
-    background-color: #007BFF;
-    color: #fff;
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    .profile img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-details h1 {
-        font-size: 24px;
-    }
-
-    .music-list h2 {
-        font-size: 20px;
+@media (min-width: 900px) {
+    .profile-list {
+        grid-template-columns: 1fr 1fr; /* 幅900px以上で2列表示 */
     }
 }
 
@@ -129,6 +103,7 @@ audio {
 
 .top h1 {
     margin-top: 20px;
+    filter: drop-shadow(3px 3px 3px #777777);
 }
 
 .top img {
@@ -136,6 +111,7 @@ audio {
     height: 150px;
     object-fit: cover;
     margin-right: 30px;
+    filter: drop-shadow(3px 3px 3px #777777);
 }
 
 .caution {
@@ -143,5 +119,12 @@ audio {
     align-items: center;
     justify-content: center;
     background-color: lightblue;
-    margin-bottom: 50px;
+}
+
+.sns {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    grid-gap: 45px;
+    align-items: center;
 }
