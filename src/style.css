@@ -45,6 +45,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-bottom: 25px;
 }
 
 .profile img {
@@ -211,4 +212,25 @@ button {
     align-items: center;
     justify-content: center;
     padding-bottom: 150px;
+}
+
+.music-button {
+    font-family: "Noto Sans JP", sans-serif;
+    background-color: #f4fabc; /* デフォルトのボタンカラー */
+    padding: 10px 20px; /* サイズを固定 */
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    min-width: 300px; /* ボタンの幅を統一 */
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #aaa;
+}
+
+.music-button.playing {
+    background-color: #ffcc00; /* 再生中のボタンの色 */
+}
+
+.music-button:hover {
+    background-color: #eae387; /* ホバー時の色 */
 }

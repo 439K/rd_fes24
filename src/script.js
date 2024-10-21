@@ -91,3 +91,43 @@ function formatTime(seconds) {
     const secs = Math.floor(seconds % 60);
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
 }
+
+document.querySelectorAll('.music-button').forEach(button => {
+    button.addEventListener('click', function() {
+        // 他のボタンから 'playing' クラスを削除
+        document.querySelectorAll('.music-button').forEach(btn => btn.classList.remove('playing'));
+        
+        // クリックされたボタンに 'playing' クラスを追加
+        this.classList.add('playing');
+        
+        // 再生処理をここに追加 (既にあるコードに続けて)
+        const songFile = this.closest('.music-item').querySelector('audio source').getAttribute('src');
+        audio.src = songFile;
+        audio.play();
+    });
+});
+
+// スペースキーまたはEnterキーで再生/一時停止をトグル
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space' || event.code === 'Enter') {
+        event.preventDefault(); // デフォルトの動作（スクロールなど）を防ぐ
+
+        if (audio.paused) {
+            audio.play();
+            playButton.querySelector('img').src = '../src/bar/pause.png'; // 一時停止アイコンに切り替え
+        } else {
+            audio.pause();
+            playButton.querySelector('img').src = '../src/bar/play.png'; // 再生アイコンに切り替え
+        }
+    }
+
+    // rキーが押された場合、リピートのオン/オフを切り替える
+    if (event.code === 'KeyR') {
+        isRepeating = !isRepeating;  // リピート状態をトグル
+        if (isRepeating) {
+            repeatButton.querySelector('img').src = '../src/bar/1repeat-on.png'; // リピートオン画像に切り替え
+        } else {
+            repeatButton.querySelector('img').src = '../src/bar/1repeat.png'; // リピートオフ画像に切り替え
+        }
+    }
+});
