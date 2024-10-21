@@ -6,26 +6,52 @@ const repeatButton = document.getElementById('repeat-button');
 const seekBar = document.getElementById('seek-bar');
 const currentTimeElement = document.querySelector('.current-time');
 const totalTimeElement = document.querySelector('.total-time');
-const songTitleElement = document.querySelector('.song-title');
+const footerSongTitleElement = document.querySelector('.footer-song-title'); // フッターの曲タイトル
 const songArtistElement = document.querySelector('.song-artist');
 
-// 初期状態のフッター
-songTitleElement.textContent = '未選択';
+// 初期状態のフッターに「未選択」と「楽曲を選択してください」を表示
+footerSongTitleElement.textContent = '未選択';
 songArtistElement.textContent = '楽曲を選択してください';
 
 // 各曲の要素を取得してクリックイベントを追加
 document.querySelectorAll('.music-item').forEach(item => {
-    item.addEventListener('click', function () {
-        const songTitle = this.querySelector('p').textContent;
-        const songFile = this.querySelector('audio source').getAttribute('src');
+    const button = item.querySelector('.music-button');
+    const audioElement = item.querySelector('audio');
+    
+    button.addEventListener('click', function () {
+        // 再生中の曲を押した場合の処理
+        if (button.classList.contains('playing')) {
+            if (!audio.paused) {
+                audio.pause();
+                button.textContent = '一時停止中'; // ボタンのテキストを「一時停止中」に変更
+            } else {
+                audio.play();
+                button.textContent = '再生中'; // 再生を再開したら「再生中」に変更
+            }
+            return; // ここで処理を終了し、再生中の曲をリロードしない
+        }
+
+        const songTitle = item.querySelector('.song-title').textContent;
+        const songFile = audioElement.querySelector('source').getAttribute('src');
         
         // 親要素の `profile-item` から作曲者名を取得
-        const composerName = this.closest('.profile-item').querySelector('.profile-details h1').textContent;
+        const composerName = item.closest('.profile-item').querySelector('.profile-details h1').textContent;
 
-        // 曲のタイトルとアーティストを更新
-        songTitleElement.textContent = songTitle;
-        songArtistElement.textContent = composerName; // 作曲者名をフッターに反映
+        // フッターの曲タイトルとアーティストを更新
+        footerSongTitleElement.textContent = songTitle;  // フッターに曲タイトルを反映
+        songArtistElement.textContent = composerName;    // フッターに作曲者名を反映
 
+        // 他のボタンの状態をリセット
+        document.querySelectorAll('.music-button').forEach(btn => {
+            btn.textContent = '再生';
+            btn.classList.remove('playing');
+            btn.style.background = '#f4fabc'; // デフォルトのボタンカラー
+        });
+
+        // このボタンの状態を更新
+        button.textContent = '再生中';
+        button.classList.add('playing');
+        
         // オーディオファイルを新しいものに変更
         audio.src = songFile;
         audio.load();
@@ -45,6 +71,13 @@ document.querySelectorAll('.music-item').forEach(item => {
 audio.addEventListener('timeupdate', () => {
     seekBar.value = Math.floor(audio.currentTime);
     currentTimeElement.textContent = formatTime(audio.currentTime);
+
+    // 再生中のボタンの色を進行に応じて変化させる
+    const playingButton = document.querySelector('.music-button.playing');
+    if (playingButton) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        playingButton.style.background = `linear-gradient(to right, #ffcc00 ${progress}%, #cccccc ${progress}%)`; // 進捗色を#ffcc00に変更
+    }
 });
 
 // 曲が終了したときの処理
@@ -55,6 +88,13 @@ audio.addEventListener('ended', () => {
         audio.play();
     } else {
         playButton.querySelector('img').src = '../src/bar/play.png'; // 再生アイコンに切り替え
+        // 再生中ボタンの状態を元に戻す
+        const playingButton = document.querySelector('.music-button.playing');
+        if (playingButton) {
+            playingButton.textContent = '再生';
+            playingButton.style.background = '#f4fabc'; // デフォルトカラーに戻す
+            playingButton.classList.remove('playing');
+        }
     }
 });
 
@@ -72,6 +112,16 @@ playButton.addEventListener('click', () => {
         audio.pause();
         playButton.querySelector('img').src = '../src/bar/play.png'; // 再生アイコンに切り替え
     }
+
+    // 再生/一時停止に応じてボタンのテキストも変更
+    const playingButton = document.querySelector('.music-button.playing');
+    if (playingButton) {
+        if (audio.paused) {
+            playingButton.textContent = '一時停止中'; // 一時停止中に変更
+        } else {
+            playingButton.textContent = '再生中'; // 再生中に変更
+        }
+    }
 });
 
 // リピートボタンの制御
@@ -82,29 +132,6 @@ repeatButton.addEventListener('click', () => {
     } else {
         repeatButton.querySelector('img').src = '../src/bar/1repeat.png'; // リピートオフ画像
     }
-});
-
-
-// 時間フォーマット関数
-function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-}
-
-document.querySelectorAll('.music-button').forEach(button => {
-    button.addEventListener('click', function() {
-        // 他のボタンから 'playing' クラスを削除
-        document.querySelectorAll('.music-button').forEach(btn => btn.classList.remove('playing'));
-        
-        // クリックされたボタンに 'playing' クラスを追加
-        this.classList.add('playing');
-        
-        // 再生処理をここに追加 (既にあるコードに続けて)
-        const songFile = this.closest('.music-item').querySelector('audio source').getAttribute('src');
-        audio.src = songFile;
-        audio.play();
-    });
 });
 
 // スペースキーまたはEnterキーで再生/一時停止をトグル
@@ -119,6 +146,16 @@ document.addEventListener('keydown', function(event) {
             audio.pause();
             playButton.querySelector('img').src = '../src/bar/play.png'; // 再生アイコンに切り替え
         }
+
+        // 再生/一時停止に応じてボタンのテキストも変更
+        const playingButton = document.querySelector('.music-button.playing');
+        if (playingButton) {
+            if (audio.paused) {
+                playingButton.textContent = '一時停止中'; // 一時停止中に変更
+            } else {
+                playingButton.textContent = '再生中'; // 再生中に変更
+            }
+        }
     }
 
     // rキーが押された場合、リピートのオン/オフを切り替える
@@ -131,3 +168,10 @@ document.addEventListener('keydown', function(event) {
         }
     }
 });
+
+// 時間フォーマット関数
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+}

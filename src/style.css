@@ -214,6 +214,17 @@ button {
     padding-bottom: 150px;
 }
 
+.song-title {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* フッターの曲タイトル用の新しいCSS */
+.footer-song-title {
+    font-weight: bold;
+    color: #333;
+}
+
 .music-button {
     font-family: "Noto Sans JP", sans-serif;
     background-color: #f4fabc; /* デフォルトのボタンカラー */
