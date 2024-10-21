@@ -205,3 +205,10 @@ button {
     height: 30px;  /* 高さを40pxに統一 */
     object-fit: contain;  /* 画像の比率を保持しつつ、ボタンの大きさに収める */
 }
+
+.questionnaire {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 150px;
+}

@@ -54,7 +54,7 @@ audio.addEventListener('ended', () => {
         audio.currentTime = 0;
         audio.play();
     } else {
-        playButton.textContent = '▶️'; // 再生ボタンを再生アイコンに戻す
+        playButton.querySelector('img').src = '../src/bar/play.png'; // 再生アイコンに切り替え
     }
 });
 
