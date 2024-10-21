@@ -128,3 +128,80 @@ audio {
     grid-gap: 45px;
     align-items: center;
 }
+
+.song-list {
+    padding: 20px;
+    text-align: center;
+}
+
+.song {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.song:hover {
+    background-color: #ddd;
+}
+
+.player-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f1f1f1;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.player-info {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+    padding-left: 15px;
+}
+
+.player-controls {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#seek-bar {
+    margin: 0 10px;
+    width: 100%;
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.current-time, .total-time {
+    font-size: 14px;
+    color: #666;
+}
+
+#play-button img {
+    margin-top: 5px;
+    width: 25px;   /* 幅を40pxに統一 */
+    height: 25px;  /* 高さを40pxに統一 */
+    object-fit: contain;  /* 画像の比率を保持しつつ、ボタンの大きさに収める */
+}
+
+#repeat-button img {
+    margin-top: 5px;
+    width: 30px;   /* 幅を40pxに統一 */
+    height: 30px;  /* 高さを40pxに統一 */
+    object-fit: contain;  /* 画像の比率を保持しつつ、ボタンの大きさに収める */
+}

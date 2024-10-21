@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="top">
-        <img src="../src/images/titlelogo.png">
+        <img src="../src/logo/titlelogo.png">
         <h1>'24 楽曲展示</h1>
     </div>
     <div class="caution">
@@ -23,7 +23,7 @@
             <div class="profile">
                 <img src="../src/images/Raison_icon.png" alt="Composer Profile Image">
                 <div class="profile-details">
-                    <h1>作曲者の名前</h1>
+                    <h1>こはく</h1>
                     <p>作曲者のプロフィールの説明作曲者のプロフィールの説明作曲者のプロフィールの説明</p>
                 </div>
             </div>
@@ -170,6 +170,20 @@
         </div>
 
         <p><a href="https://x.com" target="_new" rel="noopener noreferrer">アンケートのご協力もお願いします！</p></a>
+
+        <div class="player-footer">
+            <div class="player-info">
+                <span class="song-title">再生中の曲のタイトル</span> - 
+                <span class="song-artist">作曲者の名前</span>
+            </div>
+            <div class="player-controls">
+                <button id="play-button"><img src="../src/bar/play.png"></button>
+                <button id="repeat-button"><img src="../src/bar/1repeat.png"></button>
+                <input type="range" id="seek-bar" value="0" max="100">
+                <span class="current-time">0:00</span> / 
+                <span class="total-time">0:00</span>
+            </div>
+        </div>        
     </div>
 
 
