@@ -63,7 +63,7 @@ document.querySelectorAll('.music-item').forEach(item => {
         });
 
         audio.play();
-        playButton.querySelector('img').src = '../src/bar/pause.png'; // 一時停止アイコンに切り替え
+        playButton.querySelector('img').src = 'src/bar/pause.png'; // 一時停止アイコンに切り替え
     });
 });
 
@@ -87,7 +87,7 @@ audio.addEventListener('ended', () => {
         audio.currentTime = 0;
         audio.play();
     } else {
-        playButton.querySelector('img').src = '../src/bar/play.png'; // 再生アイコンに切り替え
+        playButton.querySelector('img').src = 'src/bar/play.png'; // 再生アイコンに切り替え
         // 再生中ボタンの状態を元に戻す
         const playingButton = document.querySelector('.music-button.playing');
         if (playingButton) {
@@ -107,10 +107,10 @@ seekBar.addEventListener('input', () => {
 playButton.addEventListener('click', () => {
     if (audio.paused) {
         audio.play();
-        playButton.querySelector('img').src = '../src/bar/pause.png'; // 一時停止アイコンに切り替え
+        playButton.querySelector('img').src = 'src/bar/pause.png'; // 一時停止アイコンに切り替え
     } else {
         audio.pause();
-        playButton.querySelector('img').src = '../src/bar/play.png'; // 再生アイコンに切り替え
+        playButton.querySelector('img').src = 'src/bar/play.png'; // 再生アイコンに切り替え
     }
 
     // 再生/一時停止に応じてボタンのテキストも変更
@@ -128,9 +128,9 @@ playButton.addEventListener('click', () => {
 repeatButton.addEventListener('click', () => {
     isRepeating = !isRepeating;
     if (isRepeating) {
-        repeatButton.querySelector('img').src = '../src/bar/1repeat-on.png'; // リピートオン画像
+        repeatButton.querySelector('img').src = 'src/bar/1repeat-on.png'; // リピートオン画像
     } else {
-        repeatButton.querySelector('img').src = '../src/bar/1repeat.png'; // リピートオフ画像
+        repeatButton.querySelector('img').src = 'src/bar/1repeat.png'; // リピートオフ画像
     }
 });
 
@@ -141,10 +141,10 @@ document.addEventListener('keydown', function(event) {
 
         if (audio.paused) {
             audio.play();
-            playButton.querySelector('img').src = '../src/bar/pause.png'; // 一時停止アイコンに切り替え
+            playButton.querySelector('img').src = 'src/bar/pause.png'; // 一時停止アイコンに切り替え
         } else {
             audio.pause();
-            playButton.querySelector('img').src = '../src/bar/play.png'; // 再生アイコンに切り替え
+            playButton.querySelector('img').src = 'src/bar/play.png'; // 再生アイコンに切り替え
         }
 
         // 再生/一時停止に応じてボタンのテキストも変更
@@ -162,9 +162,9 @@ document.addEventListener('keydown', function(event) {
     if (event.code === 'KeyR') {
         isRepeating = !isRepeating;  // リピート状態をトグル
         if (isRepeating) {
-            repeatButton.querySelector('img').src = '../src/bar/1repeat-on.png'; // リピートオン画像に切り替え
+            repeatButton.querySelector('img').src = 'src/bar/1repeat-on.png'; // リピートオン画像に切り替え
         } else {
-            repeatButton.querySelector('img').src = '../src/bar/1repeat.png'; // リピートオフ画像に切り替え
+            repeatButton.querySelector('img').src = 'src/bar/1repeat.png'; // リピートオフ画像に切り替え
         }
     }
 });

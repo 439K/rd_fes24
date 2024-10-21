@@ -236,12 +236,13 @@ button {
     text-align: center;
     border-radius: 5px;
     box-shadow: 3px 3px 3px #aaa;
+    transition: background-color 0.3s ease; /* 色が滑らかに変わるようにトランジションを追加 */
+}
+
+.music-button:hover {
+    background-color: #e5e45a; /* ホバー時に少し濃い色にする */
 }
 
 .music-button.playing {
     background-color: #ffcc00; /* 再生中のボタンの色 */
-}
-
-.music-button:hover {
-    background-color: #eae387; /* ホバー時の色 */
 }
