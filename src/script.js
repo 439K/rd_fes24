@@ -24,9 +24,11 @@ document.querySelectorAll('.music-item').forEach(item => {
             if (!audio.paused) {
                 audio.pause();
                 button.textContent = '一時停止中'; // ボタンのテキストを「一時停止中」に変更
+                playButton.querySelector('img').src = 'src/bar/play.png'; // 再生アイコンに切り替え
             } else {
                 audio.play();
                 button.textContent = '再生中'; // 再生を再開したら「再生中」に変更
+                playButton.querySelector('img').src = 'src/bar/pause.png'; // 一時停止アイコンに切り替え
             }
             return; // ここで処理を終了し、再生中の曲をリロードしない
         }
@@ -51,6 +53,8 @@ document.querySelectorAll('.music-item').forEach(item => {
         // このボタンの状態を更新
         button.textContent = '再生中';
         button.classList.add('playing');
+        button.style.background = '#ffcc00'; // 再生開始時のボタンの色
+        audio.play();
         
         // オーディオファイルを新しいものに変更
         audio.src = songFile;

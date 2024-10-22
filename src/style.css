@@ -88,23 +88,6 @@ audio {
     border-radius: 5px;
 }
 
-/* レスポンシブ対応 */
-@media (min-width: 900px) {
-    .profile-list {
-        grid-template-columns: 1fr 1fr; /* 幅900px以上で2列表示 */
-    }
-}
-
-@media (max-width: 500px) {
-    .profile {
-        display: inline;
-    }
-
-    .music-button {
-        max-width: 250px; /* ボタンの幅を統一 */
-    }
-}
-
 .top {
     display: flex;
     align-items: center;
@@ -248,6 +231,7 @@ button {
     border-radius: 5px;
     box-shadow: 3px 3px 3px #aaa;
     transition: background-color 0.3s ease; /* 色が滑らかに変わるようにトランジションを追加 */
+    cursor: pointer; /* ボタンらしく見せる */
 }
 
 .music-button:hover {
@@ -256,4 +240,60 @@ button {
 
 .music-button.playing {
     background-color: #ffcc00; /* 再生中のボタンの色 */
+}
+
+/* 再生中かつホバー時のスタイル */
+.music-button.playing:hover {
+    background-color: #ffbf00; /* 再生中でもホバーした時に少し濃くする */
+}
+
+/* レスポンシブ対応 */
+@media (min-width: 900px) {
+    .profile-list {
+        grid-template-columns: 1fr 1fr; /* 幅900px以上で2列表示 */
+    }
+}
+
+@media (max-width: 500px) {
+    .top {
+        display: flex;
+        flex-direction: column; /* 子要素を縦に並べる */
+        align-items: center; /* 子要素を中央に揃える */
+        background-color: #f4fabc; /* 背景色を元の色に */
+    }
+
+    .top img {
+        width: 150px; /* 画像の大きさを適切に調整 */
+        height: 100px;
+        margin: 0 auto; /* 中央揃え */
+    }
+
+    .top h1 {
+        margin-top: 0;
+        margin-bottom: 20px; /* 下に少しスペースを空ける */
+        font-size: 24px; /* 必要ならフォントサイズも調整 */
+        text-align: center;
+    }
+
+    .caution p {
+        margin: 0;
+    }
+
+    .profile {
+        display: inline;
+    }
+
+    .profile img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 0 auto; /* 中央揃え */
+        display: block; /* ブロック要素にする */
+        margin-bottom: 20px;
+    }
+
+    .music-button {
+        max-width: 250px; /* ボタンの幅を統一 */
+    }
 }
