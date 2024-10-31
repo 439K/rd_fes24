@@ -112,7 +112,7 @@ audio {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: lightblue;
+    background-color: rgb(255, 200, 97);
     padding: 20px;
 }
 
@@ -216,25 +216,7 @@ button {
     align-items: center;
     justify-content: center;
     padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.counter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 135px;
-}
-
-.counter p {
-    font-size: 12px;
-    margin-right: 3px;
-}
-
-.counter img {
-    width: 110%;
-    height: 110%;
-    padding-top: 7px;
+    padding-bottom: 120px;
 }
 
 .song-title {

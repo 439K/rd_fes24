@@ -35,6 +35,17 @@ document.querySelectorAll('.music-item').forEach(item => {
 
         const songTitle = item.querySelector('.song-title').textContent;
         const songFile = audioElement.querySelector('source').getAttribute('src');
+
+        // オーディオファイルを新しいものに変更し、ロードする
+        audio.src = songFile;
+        audio.load();
+
+        // 曲の音量を設定
+        audio.addEventListener('loadeddata', () => {
+            const songVolume = parseFloat(audioElement.getAttribute('data-volume')) || 1.0;
+            audio.volume = songVolume;
+            audio.play(); // 初回再生
+        });
         
         // 親要素の `profile-item` から作曲者名を取得
         const composerName = item.closest('.profile-item').querySelector('.profile-details h1').textContent;
