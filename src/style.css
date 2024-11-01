@@ -125,6 +125,19 @@ audio {
     font-size: 15px;
 }
 
+.tip2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    font-size: 15px;
+}
+
+.tip2 img {
+    filter: drop-shadow(3px 3px 3px #777777);
+}
+
 
 .sns {
     display: flex;
